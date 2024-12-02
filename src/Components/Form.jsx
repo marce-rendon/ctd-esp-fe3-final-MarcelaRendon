@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ContextGlobal } from "../Components/utils/global.context";
 
 
 const Form = () => {
-const [formData, setFormData] = useState ({
+  const { state } = useContext(ContextGlobal); 
+  const [formData, setFormData] = useState ({
   nombre: "",
   email: "",
 });
@@ -36,16 +38,17 @@ console.log("Datos enviados:", formData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className = "contact-form">
+    <div className={`form-container ${state.theme}`}>
+    <form onSubmit={handleSubmit} className = {`contact-form ${state.theme}`}>
     <div className="form-group">
     <label htmlFor="nombre">Nombre Completo:</label>
     <input 
     type= "text"
     id= "nombre"
     name= "nombre"
-    value= {FormData.nombre}
+    value= {formData.nombre}
     onChange= {handleChange}
-    placeholder="Escribe tu email completo"
+    placeholder="Escribe tu nombre completo"
     />
     </div>
     <div className="form-group">
@@ -64,6 +67,7 @@ console.log("Datos enviados:", formData);
     {error && <p className="error-message">{error}</p>}
     {successMessage && <p className="success-message">{successMessage}</p>}
     </form>
+    </div>
   );
 };
 

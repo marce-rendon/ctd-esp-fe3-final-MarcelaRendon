@@ -12,11 +12,16 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${state.theme}`}>
+      <div className="nav-logo">
+        <img src="/images/DH-odonto.png" alt="Logo" className="logo" />
+      </div>
+
       <div className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/contacto">Contacto</Link>
         <Link to="/favoritos">Favoritos</Link>
       </div>
+      
       <button onClick={handleTheme} className="handleThemeButton">
       {state.theme === "light" ? "🌙" : "☀️"} 
       </button>

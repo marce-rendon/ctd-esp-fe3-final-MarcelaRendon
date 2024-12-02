@@ -14,6 +14,13 @@ const Favs = () => {
     setFavoritos(favoritosGuardados);
   }, []);
 
+  const handleRemove = (id) => {
+    const nuevosFavoritos = favoritos.filter ((fav) => fav.id !== id);
+    setFavoritos (nuevosFavoritos);
+    localStorage.setItem ("favorites", JSON.stringify (nuevosFavoritos));
+    alert ("El dentista ha sido eliminado de favoritos.");
+  };
+
   return (
     <main className={state.theme}>
       <h1>Dentistas Favoritos</h1>
@@ -25,6 +32,8 @@ const Favs = () => {
               name={dentistas.name}
               username={dentistas.username}
               id={dentistas.id}
+              isFavorite={true} 
+              handleRemove={handleRemove}
             />
           ))
         ) : (
