@@ -3,37 +3,36 @@ import { Link } from "react-router-dom";
 
 
 const Card = ({ name, username, id }) => {
-
-  const addFav = ()=>{
-    const favoritos = JSON.parse (localStorage.getItem ("favs")) || [];
+  const addFav = ()=> {
+    const favoritos = JSON.parse (localStorage.getItem ("favorites")) || [];
     const nuevoFavorito = {name, username, id};
 
     if (favoritos.some ((fav) => fav.id === id)) {
       alert ("este dentista ya está en favoritos");
       return;
     }
-    }
 
     const actualizarFavoritos = [... favoritos, nuevoFavorito];
-    localStorage.setItem ("favs", JSON.stringify (actualizarFavoritos));
+    localStorage.setItem ("favorites", JSON.stringify (actualizarFavoritos));
     alert (`${name} ha sido agregado a favoritos.`);
-
+  };
 
   return (
     <div className="card">
-
       <h3> {name}</h3>
       <p> {username}</p>
-      <link to= {`/dentist/${id}`} className= "detail/link">
+      <Link to= {`/dentist/${id}`} className= "detail/link">
         Ver detalles
-      </link>
+      </Link>
       
         {/* En cada card deberan mostrar en name - username y el id */}
 
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
 
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Añadir a favorito</button>
+        <button onClick={addFav} className="favButton">
+          Añadir a favorito
+          </button>
     </div>
   );
 };

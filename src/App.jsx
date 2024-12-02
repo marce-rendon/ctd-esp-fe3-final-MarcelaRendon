@@ -1,4 +1,5 @@
-
+import React, { useContext } from "react";
+import { ContextGlobal } from "./Components/utils/global.context";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import Home from "./Routes/Home";
